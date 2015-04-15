@@ -1,0 +1,4 @@
+ofxOsc
+ofxAutoReloadedShader
+ofxEdsdk
+ofxSyphon
