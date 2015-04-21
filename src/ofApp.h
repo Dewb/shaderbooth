@@ -25,10 +25,13 @@ class ofApp : public ofBaseApp{
 
     ofVideoGrabber _grabber;
     ofxAutoReloadedShader _previewShader;
-    ofxAutoReloadedShader _photoShader;
-    ofxCUPS _printer;
+    ofxAutoReloadedShader _printShader;
+    bool _previewUsesPrintShader;
+    ofImage _textureImage;
 
-    ofImage _image;
     ofPixels _pixels;
     ofFbo _frameBuffer;
+
+    ofImage _outputImage;
+    ofxCUPS _printer;
 };

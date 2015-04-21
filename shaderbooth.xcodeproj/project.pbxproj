@@ -108,7 +108,7 @@
 		48C0014766D89BE49ABF7D7A /* TimerListener.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = TimerListener.h; path = ../of_v0.8.4_osx_release/addons/ofxOsc/libs/oscpack/src/ip/TimerListener.h; sourceTree = SOURCE_ROOT; };
 		540F95DECA2338CDA1E1BDF2 /* UdpSocketWin.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = UdpSocketWin.cpp; path = ../of_v0.8.4_osx_release/addons/ofxOsc/libs/oscpack/src/ip/win32/UdpSocketWin.cpp; sourceTree = SOURCE_ROOT; };
 		579E2D74470CB3A8F41E7772 /* ofxAutoReloadedShader.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxAutoReloadedShader.cpp; path = ../of_v0.8.4_osx_release/addons/ofxAutoReloadedShader/src/ofxAutoReloadedShader.cpp; sourceTree = SOURCE_ROOT; };
-		5B8048991ADE251C0040D2DA /* photo_frag.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = photo_frag.glsl; sourceTree = "<group>"; };
+		5B8048991ADE251C0040D2DA /* print_frag.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = print_frag.glsl; sourceTree = "<group>"; };
 		5B80489A1ADE251C0040D2DA /* preview_frag.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = preview_frag.glsl; sourceTree = "<group>"; };
 		5B80489B1ADE251C0040D2DA /* vertex.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = vertex.glsl; sourceTree = "<group>"; };
 		5B8048A31ADE33EF0040D2DA /* DPP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DPP.framework; sourceTree = "<group>"; };
@@ -257,7 +257,7 @@
 		5B8048971ADE251C0040D2DA /* data */ = {
 			isa = PBXGroup;
 			children = (
-				5B8048991ADE251C0040D2DA /* photo_frag.glsl */,
+				5B8048991ADE251C0040D2DA /* print_frag.glsl */,
 				5B80489A1ADE251C0040D2DA /* preview_frag.glsl */,
 				5B80489B1ADE251C0040D2DA /* vertex.glsl */,
 			);
