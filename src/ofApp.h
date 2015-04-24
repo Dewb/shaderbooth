@@ -34,4 +34,5 @@ class ofApp : public ofBaseApp{
 
     ofImage _outputImage;
     ofxCUPS _printer;
+    ofTrueTypeFont _messageFont;
 };

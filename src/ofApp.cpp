@@ -38,6 +38,9 @@ void ofApp::setup(){
 
     _printer.setPrinterName(_printer.getDefaultPrinterName());
 
+    _messageFont.loadFont("Digital dream Fat Skew Narrow.ttf", 150);
+    ofSetFrameRate(15);
+
 }
 
 //--------------------------------------------------------------
@@ -58,6 +61,26 @@ void ofApp::draw(){
         _grabber.draw((ofGetWidth() - w) / 2, (ofGetHeight() - h) / 2, w, h);
     } else {
         renderShader(_previewUsesPrintShader ? &_printShader : &_previewShader, ofGetWidth(), ofGetHeight());
+    }
+
+    string message = "";
+    int state = _printer.getPrinterState();
+    if (state == 4) {
+        message = "COPYING\nJOB IN\nTRAY 1";
+    } else if (state == 5) {
+        message = "ERROR\nERROR\nERROR";
+    }
+
+    string status = _printer.getPrinterInfo();
+    if (status == "media-empty-warning") {
+        message = "PC\nLOAD\nLETTER";
+    }
+
+    if (message != "") {
+        ofSetColor(ofColor::black);
+        _messageFont.drawString(message, 60, 210);
+        ofSetColor(ofColor::white);
+        _messageFont.drawString(message, 66, 216);
     }
 }
 
