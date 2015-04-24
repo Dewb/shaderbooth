@@ -5,6 +5,11 @@
 #include "ofxCUPS.h"
 #include "ofxEdsdk.h"
 
+typedef enum {
+    Webcam = 0,
+    DSLR = 1
+} LivePreviewSource;
+
 class ofApp : public ofBaseApp{
 
 	public:
@@ -39,4 +44,6 @@ class ofApp : public ofBaseApp{
     ofImage _outputImage;
     ofxCUPS _printer;
     ofTrueTypeFont _messageFont;
+
+    LivePreviewSource previewSource;
 };

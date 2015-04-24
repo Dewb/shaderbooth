@@ -8,6 +8,8 @@
 //#define PAPER_X CAMERA_X
 //#define PAPER_Y CAMERA_Y
 
+
+
 //--------------------------------------------------------------
 void ofApp::setup(){
 
@@ -23,9 +25,13 @@ void ofApp::setup(){
         }
     }
 
-    _grabber.setDeviceID(devices.size() - 1);
-    _grabber.setDesiredFrameRate(60);
-    _grabber.initGrabber(CAMERA_X, CAMERA_Y);
+    previewSource = DSLR;
+
+    if (previewSource == Webcam) {
+        _grabber.setDeviceID(devices.size() - 1);
+        _grabber.setDesiredFrameRate(60);
+        _grabber.initGrabber(CAMERA_X, CAMERA_Y);
+    }
 
     _canonCamera.setup();
 
@@ -47,22 +53,36 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    _grabber.update();
+    if (previewSource == Webcam) {
+        _grabber.update();
+    }
+
     _printer.updatePrinterInfo();
 
-    _canonCamera.update();
-    if(_canonCamera.isPhotoNew()) {
-        processPhoto(_canonCamera.getPhotoTexture());
+    if (_canonCamera.isConnected()) {
+        _canonCamera.update();
+
+        if(_canonCamera.isPhotoNew()) {
+            processPhoto(_canonCamera.getPhotoTexture());
+        }
     }
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+    ofTexture* pPreviewTexture;
+    if (previewSource == Webcam) {
+        pPreviewTexture = &_grabber.getTextureReference();
+    } else if (previewSource == DSLR) {
+        pPreviewTexture = &_canonCamera.getLiveTexture();
+    }
 
-    renderShader(_previewUsesPrintShader ? &_printShader : &_previewShader,
-                 _grabber.getTextureReference(),
-                 ofGetWidth(),
-                 ofGetHeight());
+    if (pPreviewTexture) {
+        renderShader(_previewUsesPrintShader ? &_printShader : &_previewShader,
+                     *pPreviewTexture,
+                     ofGetWidth(),
+                     ofGetHeight());
+    }
 
     string message = "";
     int state = _printer.getPrinterState();
@@ -102,7 +122,7 @@ void ofApp::renderShader(ofShader* shader, ofTexture& cameraTexture, int w, int 
 
     ofRect(0, 0, w, h);
 
-    _grabber.getTextureReference().unbind();
+    cameraTexture.unbind();
     _textureImage.getTextureReference().unbind();
 
     shader->end();

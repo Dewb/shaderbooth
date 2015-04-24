@@ -121,7 +121,7 @@ float pnoise(vec2 P, vec2 rep)
 
 void main()
 {
-    vec2 uv = vec2(gl_FragCoord.x, render_size.y - gl_FragCoord.y);
+    vec2 uv = vec2(render_size.x - gl_FragCoord.x, render_size.y - gl_FragCoord.y);
     vec2 vuv = vec2(uv.s * video_size.x / render_size.x, uv.t * video_size.y / render_size.y);
     vec4 v = texture2DRect(video, vuv);
     vec2 tuv = vec2(uv.s * texture_size.x / render_size.x, uv.t * texture_size.y / render_size.y);
