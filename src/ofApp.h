@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "ofxAutoReloadedShader.h"
 #include "ofxCUPS.h"
+#include "ofxEdsdk.h"
 
 class ofApp : public ofBaseApp{
 
@@ -21,9 +22,12 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 
-    void renderShader(ofShader* shader, int width, int height);
-
+    void renderShader(ofShader* shader, ofTexture& cameraTexture, int width, int height);
+    void processPhoto(ofTexture& cameraTexture);
+    
     ofVideoGrabber _grabber;
+    ofxEdsdk::Camera _canonCamera;
+
     ofxAutoReloadedShader _previewShader;
     ofxAutoReloadedShader _printShader;
     bool _previewUsesPrintShader;

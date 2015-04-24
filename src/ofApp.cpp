@@ -27,6 +27,8 @@ void ofApp::setup(){
     _grabber.setDesiredFrameRate(60);
     _grabber.initGrabber(CAMERA_X, CAMERA_Y);
 
+    _canonCamera.setup();
+
     _printShader.load("vertex.glsl", "print_frag.glsl", "");
     _previewShader.load("vertex.glsl", "preview_frag.glsl", "");
     _previewUsesPrintShader = false;
@@ -47,26 +49,25 @@ void ofApp::setup(){
 void ofApp::update(){
     _grabber.update();
     _printer.updatePrinterInfo();
+
+    _canonCamera.update();
+    if(_canonCamera.isPhotoNew()) {
+        processPhoto(_canonCamera.getPhotoTexture());
+    }
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    if (0) {
-        // draw without shader
-        float wf = ofGetWidth() / (_grabber.width * 1.0);
-        float hf = ofGetHeight() / (_grabber.height * 1.0);
-        float factor = max(wf, hf);
-        float w = _grabber.width * factor;
-        float h = _grabber.height * factor;
-        _grabber.draw((ofGetWidth() - w) / 2, (ofGetHeight() - h) / 2, w, h);
-    } else {
-        renderShader(_previewUsesPrintShader ? &_printShader : &_previewShader, ofGetWidth(), ofGetHeight());
-    }
+
+    renderShader(_previewUsesPrintShader ? &_printShader : &_previewShader,
+                 _grabber.getTextureReference(),
+                 ofGetWidth(),
+                 ofGetHeight());
 
     string message = "";
     int state = _printer.getPrinterState();
     if (state == 4) {
-        message = "COPYING\nJOB IN\nTRAY 1";
+        message = "COPYING\nJOB\nTRAY 1";
     } else if (state == 5) {
         message = "ERROR\nERROR\nERROR";
     }
@@ -84,15 +85,15 @@ void ofApp::draw(){
     }
 }
 
-void ofApp::renderShader(ofShader* shader, int w, int h) {
+void ofApp::renderShader(ofShader* shader, ofTexture& cameraTexture, int w, int h) {
     shader->begin();
 
     shader->setUniform2f("render_size", w, h);
 
     glActiveTexture(GL_TEXTURE0_ARB);
-    _grabber.getTextureReference().bind();
-    shader->setUniformTexture("video", _grabber.getTextureReference(), 0);
-    shader->setUniform2f("video_size", _grabber.width, _grabber.height);
+    cameraTexture.bind();
+    shader->setUniformTexture("video", cameraTexture, 0);
+    shader->setUniform2f("video_size", cameraTexture.getWidth(), cameraTexture.getHeight());
 
     glActiveTexture(GL_TEXTURE1_ARB);
     _textureImage.getTextureReference().bind();
@@ -107,17 +108,25 @@ void ofApp::renderShader(ofShader* shader, int w, int h) {
     shader->end();
 }
 
+void ofApp::processPhoto(ofTexture& cameraTexture) {
+    _frameBuffer.begin();
+    renderShader(&_printShader, cameraTexture, PAPER_X, PAPER_Y);
+    _frameBuffer.end();
+
+    _frameBuffer.readToPixels(_pixels);
+    _outputImage.setFromPixels(_pixels);
+    _outputImage.saveImage("output.png");
+    _printer.printImage("output.png");
+}
+
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
     if (key == ' ') {
-        _frameBuffer.begin();
-        renderShader(&_printShader, PAPER_X, PAPER_Y);
-        _frameBuffer.end();
-
-        _frameBuffer.readToPixels(_pixels);
-        _outputImage.setFromPixels(_pixels);
-        _outputImage.saveImage("foo.png");
-        _printer.printImage("foo.png");
+        if (_canonCamera.isConnected()) {
+            _canonCamera.takePhoto();
+        } else {
+            processPhoto(_grabber.getTextureReference());
+        }
     } else if (key == 'p') {
         _previewUsesPrintShader = !_previewUsesPrintShader;
     }
