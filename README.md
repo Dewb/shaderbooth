@@ -8,9 +8,9 @@ Shaders can be live-edited while booth is running. Currently set up to mimic a p
 Requires at least one attached camera. Supports Quicktime-compatible webcams, and Canon DSLRs that speak EDSDK. 
 
 Three possible scenarios:
-- Live preview with webcam, photos taken with DSLR
 - Live preview and photos with DSLR
 - Live preview and photos with webcam
+- Live preview with webcam, photos taken with DSLR (change LivePreviewSource to Webcam in setup().)
 
 Requirements:
 
