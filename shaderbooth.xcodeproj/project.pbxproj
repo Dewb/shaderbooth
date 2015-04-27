@@ -14,6 +14,7 @@
 		3597A483223FB91820171167 /* ofxAutoReloadedShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 579E2D74470CB3A8F41E7772 /* ofxAutoReloadedShader.cpp */; };
 		4529E1396FFC7FC5C106A0EC /* OscPrintReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1200D36AE8872F63B3275453 /* OscPrintReceivedElements.cpp */; };
 		4FC0D2999CA3174FBAB27018 /* OscOutboundPacketStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 66865D9E918585208CC48B40 /* OscOutboundPacketStream.cpp */; };
+		5B4699561AEE8BD100FAF558 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 5B4699551AEE8BD100FAF558 /* README.md */; };
 		5B8048C41ADE33EF0040D2DA /* EdsExamples.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B8048AA1ADE33EF0040D2DA /* EdsExamples.cpp */; };
 		5B8048C51ADE33EF0040D2DA /* EdsException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B8048AC1ADE33EF0040D2DA /* EdsException.cpp */; };
 		5B8048C61ADE33EF0040D2DA /* EdsStrings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B8048AE1ADE33EF0040D2DA /* EdsStrings.cpp */; };
@@ -108,6 +109,7 @@
 		48C0014766D89BE49ABF7D7A /* TimerListener.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = TimerListener.h; path = ../of_v0.8.4_osx_release/addons/ofxOsc/libs/oscpack/src/ip/TimerListener.h; sourceTree = SOURCE_ROOT; };
 		540F95DECA2338CDA1E1BDF2 /* UdpSocketWin.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = UdpSocketWin.cpp; path = ../of_v0.8.4_osx_release/addons/ofxOsc/libs/oscpack/src/ip/win32/UdpSocketWin.cpp; sourceTree = SOURCE_ROOT; };
 		579E2D74470CB3A8F41E7772 /* ofxAutoReloadedShader.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxAutoReloadedShader.cpp; path = ../of_v0.8.4_osx_release/addons/ofxAutoReloadedShader/src/ofxAutoReloadedShader.cpp; sourceTree = SOURCE_ROOT; };
+		5B4699551AEE8BD100FAF558 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		5B8048991ADE251C0040D2DA /* print_frag.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = print_frag.glsl; sourceTree = "<group>"; };
 		5B80489A1ADE251C0040D2DA /* preview_frag.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = preview_frag.glsl; sourceTree = "<group>"; };
 		5B80489B1ADE251C0040D2DA /* vertex.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = vertex.glsl; sourceTree = "<group>"; };
@@ -500,6 +502,7 @@
 		E4B69B4A0A3A1720003C02F2 = {
 			isa = PBXGroup;
 			children = (
+				5B4699551AEE8BD100FAF558 /* README.md */,
 				5B8048DD1ADE42F20040D2DA /* libcups.2.dylib */,
 				5B8048D41ADE397B0040D2DA /* DPP.framework */,
 				5B8048D51ADE397B0040D2DA /* EDSDK.framework */,
@@ -652,6 +655,7 @@
 				5B8048C41ADE33EF0040D2DA /* EdsExamples.cpp in Sources */,
 				DAD06CB487FF40368616DE73 /* ofxOscMessage.cpp in Sources */,
 				5B8048C61ADE33EF0040D2DA /* EdsStrings.cpp in Sources */,
+				5B4699561AEE8BD100FAF558 /* README.md in Sources */,
 				210D775FAA4C095071F7DF14 /* ofxOscParameterSync.cpp in Sources */,
 				5B8048C81ADE33EF0040D2DA /* ofxEdsdk.cpp in Sources */,
 				1ECBAB3182F3314F46F20CEC /* ofxOscReceiver.cpp in Sources */,

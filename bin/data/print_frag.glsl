@@ -128,7 +128,7 @@ void main()
     vec4 t = texture2DRect(texture, tuv);
 
     float x = v.r * 0.2989 + v.g * 0.5870 + v.b * 0.1140;
-    x = pow(x, 1.2) + 0.5 * t.r + 0.08 * (render_size.x - uv.s)/render_size.x * pnoise(1.0 * uv, vec2(0.5 + uv.s, 17.2));
+    x = pow(x, 0.85) + 0.5 * t.r + 0.08 * (render_size.x - uv.s)/render_size.x * pnoise(1.0 * uv, vec2(0.5 + uv.s, 17.2));
     //x = t.r;
     gl_FragColor = vec4(x, x, x, 1.0);
 }

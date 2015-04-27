@@ -27,14 +27,17 @@ void ofApp::setup(){
 
     previewSource = DSLR;
 
+    _canonCamera.setup();
+    if (!_canonCamera.isConnected()) {
+        previewSource = Webcam;
+    }
+
     if (previewSource == Webcam) {
         _grabber.setDeviceID(devices.size() - 1);
         _grabber.setDesiredFrameRate(60);
         _grabber.initGrabber(CAMERA_X, CAMERA_Y);
     }
-
-    _canonCamera.setup();
-
+    
     _printShader.load("vertex.glsl", "print_frag.glsl", "");
     _previewShader.load("vertex.glsl", "preview_frag.glsl", "");
     _previewUsesPrintShader = false;
