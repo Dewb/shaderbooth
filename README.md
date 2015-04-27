@@ -17,6 +17,6 @@ Requirements:
 - Mac OS X only (tested on 10.6 & 10.10)
 - [openFrameworks 0.8.4](http://openframeworks.cc/download/)
 - [ofxAutoReloadedShader](https://github.com/andreasmuller/ofxAutoReloadedShader)
-- [ofxEDSDK](https://github.com/kylemcdonald/ofxEdsdk) (with "isConnected()" method added)
+- [ofxEDSDK](https://github.com/kylemcdonald/ofxEdsdk) (with ```isConnected()``` method added)
 - [Gutenprint](http://gimp-print.sourceforge.net/)
 
