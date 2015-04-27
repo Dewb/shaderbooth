@@ -10,7 +10,7 @@ Requires at least one attached camera. Supports Quicktime-compatible webcams, an
 Three possible scenarios:
 - Live preview and photos with DSLR
 - Live preview and photos with webcam
-- Live preview with webcam, photos taken with DSLR (change LivePreviewSource to Webcam in setup().)
+- Live preview with webcam, photos taken with DSLR (change ```LivePreviewSource``` to ```Webcam``` in ```setup()```.)
 
 Requirements:
 
